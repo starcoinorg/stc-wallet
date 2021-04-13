@@ -25,13 +25,13 @@
     "wallets",
     "keys"
   ],
-  "author": "Alex Beregszaszi <alex@rtfs.hu>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/starcoinorg/stc-wallet/issues"
   },
   "homepage": "https://github.com/starcoinorg/stc-wallet",
   "dependencies": {
+    "@starcoin/stc-util": "^0.2.0",
     "aes-js": "^3.1.1",
     "bs58check": "^2.1.2",
     "ethereumjs-util": "^6.0.0",

@@ -1,5 +1,5 @@
 var Buffer = require('safe-buffer').Buffer
-var ethUtil = require('ethereumjs-util')
+var ethUtil = require('@starcoin/stc-util')
 var crypto = require('crypto')
 var randomBytes = require('randombytes')
 var scryptsy = require('scrypt.js')
@@ -50,6 +50,7 @@ Object.defineProperty(Wallet.prototype, 'pubKey', {
 })
 
 Wallet.generate = function (icapDirect) {
+  console.log('Wallet.generate', icapDirect)
   if (icapDirect) {
     var max = new ethUtil.BN('088f924eeceeda7fe92e1f5b0fffffffffffffff', 16)
     while (true) {
@@ -202,6 +203,8 @@ Wallet.fromExtendedPublicKey = function (pub) {
 }
 
 Wallet.fromPrivateKey = function (priv) {
+  console.log('Wallet.fromPrivateKey', priv)
+  console.log('test privKey', ethUtil.privateToAddress(priv))
   return new Wallet(priv)
 }
 
