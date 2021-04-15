@@ -12,8 +12,8 @@
     "coveralls": "npm run build:dist && npm run coverage && coveralls <coverage/lcov.info",
     "lint": "standard",
     "prepublishOnly": "npm run lint && npm run test:build",
-    "test": "mocha ./src/test/*.js",
-    "test:build": "npm run build:dist && mocha ./test/*.js",
+    "test": "mocha ./src/test/index.js",
+    "test:build": "npm run build:dist && mocha ./test/index.js",
     "build:dist": "babel src/ -d ."
   },
   "repository": {
