@@ -44,3 +44,7 @@ package-lock.json
 dist
 
 .DS_Store
+./index.js
+./hdkey.js
+./provider-engine.js
+./thirdparty.js
