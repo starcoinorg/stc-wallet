@@ -49,8 +49,22 @@ Object.defineProperty(Wallet.prototype, 'pubKey', {
   }
 })
 
+Wallet.generateED = async function (icapDirect) {
+  if (icapDirect) {
+    var max = new ethUtil.BN('088f924eeceeda7fe92e1f5b0fffffffffffffff', 16)
+    while (true) {
+      var privKey = randomBytes(32)
+      const addressED = await ethUtil.privateToAddressED(privKey)
+      if (new ethUtil.BN(addressED).lte(max)) {
+        return new Wallet(privKey)
+      }
+    }
+  } else {
+    return new Wallet(randomBytes(32))
+  }
+}
+
 Wallet.generate = function (icapDirect) {
-  console.log('Wallet.generate', icapDirect)
   if (icapDirect) {
     var max = new ethUtil.BN('088f924eeceeda7fe92e1f5b0fffffffffffffff', 16)
     while (true) {
@@ -203,8 +217,6 @@ Wallet.fromExtendedPublicKey = function (pub) {
 }
 
 Wallet.fromPrivateKey = function (priv) {
-  console.log('Wallet.fromPrivateKey', priv)
-  console.log('test privKey', ethUtil.privateToAddress(priv))
   return new Wallet(priv)
 }
 

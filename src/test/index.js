@@ -2,7 +2,7 @@ var assert = require('assert')
 var Buffer = require('safe-buffer').Buffer
 var Wallet = require('../')
 var Thirdparty = require('../thirdparty.js')
-var ethUtil = require('ethereumjs-util')
+var ethUtil = require('@starcoin/stc-util')
 
 var fixturePrivateKey = 'efca4cdd31923b50f4214af5d2ae10e7ac45a5019e9431cc195482d707485378'
 var fixturePrivateKeyStr = '0x' + fixturePrivateKey
@@ -105,6 +105,16 @@ describe('.fromExtendedPublicKey()', function () {
     assert.strictEqual(Wallet.fromExtendedPublicKey(xpub).getAddressString(), '0xb800bf5435f67c7ee7d83c3a863269969a57c57c')
   })
 })
+
+describe('.generateED()', function () {
+  it('should generate an account(using then)', function () {
+    Wallet.generateED().then(value => { assert.strictEqual(value.getPrivateKey().length, 32) })
+  });
+  it('should generate an account(using async/await)', async function () {
+    const wallet = await Wallet.generateED()
+    assert.strictEqual(wallet.getPrivateKey().length, 32);
+  });
+});
 
 describe('.generate()', function () {
   it('should generate an account', function () {
