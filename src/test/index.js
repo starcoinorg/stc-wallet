@@ -116,6 +116,24 @@ describe('.generateED()', function () {
   });
 });
 
+
+describe('.generateVanityAddressED()', function () {
+  it('should generate an account with 000 prefix (object)', async function () {
+    this.timeout(180000) // 3minutes
+    var wallet = await Wallet.generateVanityAddressED(/^000/)
+    assert.strictEqual(wallet.getPrivateKey().length, 32)
+    // assert.strictEqual(wallet.getAddress()[0], 0)
+    // assert.strictEqual(wallet.getAddress()[1] >>> 4, 0)
+  })
+  it('should generate an account with 000 prefix (string)', async function () {
+    this.timeout(180000) // 3minutes
+    var wallet = await Wallet.generateVanityAddressED('^000')
+    assert.strictEqual(wallet.getPrivateKey().length, 32)
+    // assert.strictEqual(wallet.getAddress()[0], 0)
+    // assert.strictEqual(wallet.getAddress()[1] >>> 4, 0)
+  })
+})
+
 describe('.generate()', function () {
   it('should generate an account', function () {
     assert.strictEqual(Wallet.generate().getPrivateKey().length, 32)

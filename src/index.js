@@ -64,6 +64,20 @@ Wallet.generateED = async function (icapDirect) {
   }
 }
 
+Wallet.generateVanityAddressED = async function (pattern) {
+  if (typeof pattern !== 'object') {
+    pattern = new RegExp(pattern)
+  }
+
+  while (true) {
+    var privKey = randomBytes(32)
+    const addressED = await ethUtil.privateToAddressED(privKey)
+    if (pattern.test(addressED.toString('hex'))) {
+      return new Wallet(privKey)
+    }
+  }
+}
+
 Wallet.generate = function (icapDirect) {
   if (icapDirect) {
     var max = new ethUtil.BN('088f924eeceeda7fe92e1f5b0fffffffffffffff', 16)
