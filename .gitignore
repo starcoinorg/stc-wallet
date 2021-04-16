@@ -48,3 +48,5 @@ dist
 ./hdkey.js
 ./provider-engine.js
 ./thirdparty.js
+test/index.js
+test/hdkey.js
