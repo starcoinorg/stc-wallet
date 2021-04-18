@@ -44,9 +44,6 @@ Object.defineProperty(Wallet.prototype, 'pubKey', {
 
 Wallet.prototype.checkValidPublicKey = async function () {
   console.log('checkValidPublicKey', this.pubKey.length)
-  if (this.pubKey.length !== 32) {
-    return true
-  }
   const privKeyStr = this.privKey.toString('hex')
   console.log('privKeyStr', privKeyStr)
   const publicKeyStr = await ethUtil.privateToPublicED(this.privKey)
@@ -73,10 +70,7 @@ Wallet.prototype.getPublicKeyString = function () {
 
 Wallet.prototype.getAddress = function () {
   console.log('getAddress', this.pubKey.length, this.pubKey.toString('hex'))
-  if (this.pubKey.length === 32) {
-    return ethUtil.publicToAddressED(this.pubKey)
-  }
-  return ethUtil.publicToAddress(this.pubKey)
+  return ethUtil.publicToAddressED(this.pubKey)
 }
 
 Wallet.prototype.getAddressString = function () {
