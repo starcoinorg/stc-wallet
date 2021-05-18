@@ -1,13 +1,14 @@
-const HDKey = require('hdkey')
+const ethUtil = require('@starcoin/stc-util')
+const HDKey = require('@starcoin/stc-hdkey')
 const Wallet = require('./index.js')
 
-function EthereumHDKey () {
+function EthereumHDKey() {
 }
 
 /*
  * Horrible wrapping.
  */
-function fromHDKey (hdkey) {
+function fromHDKey(hdkey) {
   var ret = new EthereumHDKey()
   ret._hdkey = hdkey
   return ret
@@ -41,11 +42,7 @@ EthereumHDKey.prototype.deriveChild = function (index) {
 }
 
 EthereumHDKey.prototype.getWallet = function () {
-  if (this._hdkey._privateKey) {
-    return Wallet.fromPrivateKey(this._hdkey._privateKey)
-  } else {
-    return Wallet.fromPublicKey(this._hdkey._publicKey, true)
-  }
+  return Wallet.fromPrivatePublic(this._hdkey._privateKey, this._hdkey._publicKey)
 }
 
 module.exports = EthereumHDKey

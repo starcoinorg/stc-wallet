@@ -13,6 +13,7 @@
     "lint": "standard",
     "prepublishOnly": "npm run lint && npm run test:build",
     "test": "mocha ./src/test/index.js",
+    "test:hdkey": "mocha ./src/test/hdkey.js",
     "test:build": "npm run build:dist && mocha ./test/index.js",
     "build:dist": "babel src/ -d ."
   },
@@ -32,6 +33,7 @@
   "homepage": "https://github.com/starcoinorg/stc-wallet",
   "dependencies": {
     "@starcoin/stc-util": "^0.2.0",
+    "@starcoin/stc-hdkey": "^0.1.0",
     "aes-js": "^3.1.1",
     "bs58check": "^2.1.2",
     "ethereumjs-util": "^6.0.0",

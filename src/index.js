@@ -1,6 +1,6 @@
 var ethUtil = require('@starcoin/stc-util')
 
-function assert (val, msg) {
+function assert(val, msg) {
   if (!val) {
     throw new Error(msg || 'Assertion failed')
   }
@@ -43,12 +43,8 @@ Object.defineProperty(Wallet.prototype, 'pubKey', {
 })
 
 Wallet.prototype.checkValidPublicKey = async function () {
-  console.log('checkValidPublicKey', this.pubKey.length)
   const privKeyStr = this.privKey.toString('hex')
-  console.log('privKeyStr', privKeyStr)
   const publicKeyStr = await ethUtil.privateToPublicED(this.privKey)
-  console.log('publicKeyStr', publicKeyStr)
-  console.log(this.pubKey.toString('hex'))
   return this.pubKey.toString('hex') === publicKeyStr.toString('hex')
 }
 
@@ -69,7 +65,10 @@ Wallet.prototype.getPublicKeyString = function () {
 }
 
 Wallet.prototype.getAddress = function () {
-  console.log('getAddress', this.pubKey.length, this.pubKey.toString('hex'))
+  if (this.pubKey.length == 33) {
+    // HD
+    return ethUtil.publicToAddressED(this.pubKey.slice(1))
+  }
   return ethUtil.publicToAddressED(this.pubKey)
 }
 
