@@ -67,7 +67,10 @@ Wallet.prototype.getPublicKeyString = function () {
 Wallet.prototype.getAddress = function () {
   if (this.pubKey.length == 33) {
     // HD
-    return ethUtil.publicToAddressED(this.pubKey.slice(1))
+    return ethUtil.privateToPublicED(this.privKey)
+      .then((pubKey) => {
+        return ethUtil.publicToAddressED(pubKey)
+      })
   }
   return ethUtil.publicToAddressED(this.pubKey)
 }
