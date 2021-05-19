@@ -66,7 +66,9 @@ Wallet.prototype.getPublicKeyString = function () {
 
 Wallet.prototype.getAddress = function () {
   if (this.pubKey.length == 33) {
-    // HD
+    // the original publicKey of hdkeyring's root hdkey is used for deriveChild, so we should keep it
+    // instead of override it with the ed25519 publicKey
+    // we calculate the ed25519 publicKey here, and get the address from it.
     return ethUtil.privateToPublicED(this.privKey)
       .then((pubKey) => {
         return ethUtil.publicToAddressED(pubKey)
