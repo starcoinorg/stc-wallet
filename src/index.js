@@ -1,4 +1,5 @@
 var ethUtil = require('@starcoin/stc-util')
+var encoding = require('@starcoin/starcoin').encoding
 
 function assert(val, msg) {
   if (!val) {
@@ -65,6 +66,7 @@ Wallet.prototype.getPublicKeyString = function () {
 }
 
 Wallet.prototype.getAddress = function () {
+  // HD
   if (this.pubKey.length == 33) {
     // the original publicKey of hdkeyring's root hdkey is used for deriveChild, so we should keep it
     // instead of override it with the ed25519 publicKey
@@ -74,7 +76,20 @@ Wallet.prototype.getAddress = function () {
         return ethUtil.publicToAddressED(pubKey)
       })
   }
+  // Simple
   return ethUtil.publicToAddressED(this.pubKey)
+}
+
+Wallet.prototype.getReceiptIdentifier = function () {
+  // HD
+  if (this.pubKey.length == 33) {
+    return ethUtil.privateToPublicED(this.privKey)
+      .then((pubKey) => {
+        return encoding.publicKeyToReceiptIdentifier(pubKey.toString('hex'))
+      })
+  }
+  // Simple
+  return Promise.resolve(encoding.publicKeyToReceiptIdentifier(this.getPublicKeyString()))
 }
 
 Wallet.prototype.getAddressString = function () {

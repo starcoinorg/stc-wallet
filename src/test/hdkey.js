@@ -73,3 +73,13 @@ describe('.getWallet()', function () {
     assert.strictEqual(hdnode.getWallet().getPublicKeyString(), '0x0639797f6cc72aea0f3d309730844a9e67d9f1866e55845c5f7e0ab48402973defa5cb69df462bcc6d73c31e1c663c225650e80ef14a507b203f2a12aea55bc1')
   })
 })
+
+describe('getReceiptIdentifier', function () {
+  it('from HD', function () {
+    const wallet = fixturehd.getWallet()
+    wallet.getReceiptIdentifier()
+      .then((receiptIdentifier) => {
+        assert.strictEqual(receiptIdentifier, 'stc1pgakstzpe570mddrdv34kphpg2l2s4cjyg5j8ae3kmw6tujty33d5wmg93qu608akk3kkg6mqms59wks3lm3')
+      })
+  })
+})

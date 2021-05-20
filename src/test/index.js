@@ -71,3 +71,14 @@ describe('raw new Wallet() init', function () {
   })
 })
 
+describe('getReceiptIdentifier', function () {
+  it('from Simple', function () {
+    const privateKey = 'a6d8991ca3d6813f493d13216d6dedd30211a649d21b2ca102b860bea51045fd'
+    const publicKey = 'e8eba2c517d0b5012c20737b3627c58447ccd6098aaae84027520afcc82a4ded'
+    const wallet = Wallet.fromPrivatePublic(Buffer.from(privateKey, 'hex'), Buffer.from(publicKey, 'hex'))
+    wallet.getReceiptIdentifier()
+      .then((receiptIdentifier) => {
+        assert.strictEqual(receiptIdentifier, 'stc1pgq8g7ms4737fy5v7y5nle4jt8gzf458ccaf5zfs7kd22hgfm8f85qr50dc2lglyj2x0z2flu6e9n59wnm3d')
+      })
+  })
+})

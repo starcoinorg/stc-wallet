@@ -1,4 +1,3 @@
-const ethUtil = require('@starcoin/stc-util')
 const HDKey = require('@starcoin/stc-hdkey')
 const Wallet = require('./index.js')
 
