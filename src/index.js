@@ -58,12 +58,29 @@ Wallet.prototype.getPrivateKeyString = function () {
 }
 
 Wallet.prototype.getPublicKey = function () {
-  return this.pubKey
-}
+  // HD
+  if (this.pubKey.length == 33) {
+    // the original publicKey of hdkeyring's root hdkey is used for deriveChild, so we should keep it
+    // instead of override it with the ed25519 publicKey
+    // we calculate the ed25519 publicKey here
+    return ethUtil.privateToPublicED(this.privKey).then(pubKey => {
+      return pubKey;
+    });
+  }
+  // Simple
+  return this.pubKey;
+};
 
 Wallet.prototype.getPublicKeyString = function () {
-  return ethUtil.bufferToHex(this.getPublicKey())
-}
+  // HD
+  if (this.pubKey.length == 33) {
+    return this.getPublicKey().then(pubKey => {
+      return ethUtil.bufferToHex(pubKey);
+    });
+  }
+  // Simple
+  return ethUtil.bufferToHex(this.getPublicKey());
+};
 
 Wallet.prototype.getAddress = function () {
   // HD
