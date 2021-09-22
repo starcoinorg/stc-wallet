@@ -179,10 +179,10 @@
     "@ethersproject/properties" "^5.2.0"
     "@ethersproject/strings" "^5.2.0"
 
-"@starcoin/starcoin@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.npmjs.org/@starcoin/starcoin/-/starcoin-0.3.0.tgz#8d025b1dfd09a5eb130532404befb5be31d87748"
-  integrity sha512-gLe/WEi7WKh3zf09WpsTfRZE4Hlok8srdy+O08NzSZOtLDsonigcUpbjvaOqWK9r8LDDGgOcRAUu4wiPj3splw==
+"@starcoin/starcoin@^1.2.1":
+  version "1.4.2"
+  resolved "https://registry.npmjs.org/@starcoin/starcoin/-/starcoin-1.4.2.tgz#4327fdccfe963ad2fe30ab8bbe5f9081adea7400"
+  integrity sha512-2+NIsptmJU4dbijg8UquUwysA0xEsL7NAGEoaCEGjNSq+T+mqZAfIgSWykL6QLMZvz1kpcqrDEdmHUERi1LixA==
   dependencies:
     "@ethersproject/basex" "^5.0.4"
     "@ethersproject/bignumber" "^5.0"
@@ -193,6 +193,7 @@
     "@ethersproject/properties" "^5.0.4"
     "@ethersproject/sha2" "^5.0.4"
     "@ethersproject/web" "^5.0.9"
+    "@starcoin/stc-ed25519" "^0.1.0"
     bech32 "^2.0.0"
     ethereumjs-util "5.1.0"
     is-alphabetical "^1.0.4"
@@ -203,15 +204,19 @@
     is-word-character "^1.0.4"
     js-sha3 "^0.8.0"
     jssha "^3.2.0"
-    noble-ed25519 "^1.0.4"
+    read-bigint "^0.1.6"
     ws "7.2.3"
 
-"@starcoin/stc-hdkey@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.npmjs.org/@starcoin/stc-hdkey/-/stc-hdkey-0.2.0.tgz#03f39fd2308df9811789ee57ad2c0bdc911663ca"
-  integrity sha512-PTs8WSDn9bdcicFW962pcc/fYc51IOLogpFaN57tqvE+Socpfpnt5l56yiQaGmpR8Th6aoeOb8XYdGWhDc59zw==
+"@starcoin/stc-ed25519@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.npmjs.org/@starcoin/stc-ed25519/-/stc-ed25519-0.1.0.tgz#56e65b388889a5953e01806cc3deaa20ddaf8174"
+  integrity sha512-H3oz8fNQD604Ak0cSNTDcbfzLxsB9XAKw1aJO7iBPuZWcHF8bgn7xxOzsinx5V5LGaPeleWc/Qw4vCKnK6cxHQ==
+
+"@starcoin/stc-hdkey@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/@starcoin/stc-hdkey/-/stc-hdkey-0.3.0.tgz#58a9bc254357f9827d46d0d166afda216edcc4df"
+  integrity sha512-y8z4GUvttmph/0tJ3PCio2Q7F0kE/6ZuE2jssWcZd85Tvf/F6ztHfGDrj/6/t4QY5L/P7YhjLrrUCKWZtdNGZA==
   dependencies:
-    "@starcoin/stc-util" "^0.3.0"
     coinstring "^2.0.0"
     safe-buffer "^5.1.1"
     secp256k1 "^3.0.1"
@@ -3453,6 +3458,11 @@ react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+read-bigint@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.npmjs.org/read-bigint/-/read-bigint-0.1.6.tgz#451fdb5ef5a9bb425fba1f92511038e2a54e5f26"
+  integrity sha512-WHfCMBWes972LRSGYb1/mTW6yy83DQ28Lj94TfVM1HIhFf2I7Di09bUoc8+pPsx4JXgEge2r0d9y+7lj6x3j4g==
 
 read-pkg-up@^2.0.0:
   version "2.0.0"

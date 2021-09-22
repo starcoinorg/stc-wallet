@@ -1,6 +1,6 @@
 {
   "name": "@starcoin/stc-wallet",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Utilities for handling Starcoin keys",
   "main": "index.js",
   "files": [
@@ -34,7 +34,7 @@
   "homepage": "https://github.com/starcoinorg/stc-wallet",
   "dependencies": {
     "@starcoin/stc-util": "^0.3.0",
-    "@starcoin/stc-hdkey": "^0.2.0",
+    "@starcoin/stc-hdkey": "^0.3.0",
     "@starcoin/starcoin": "^1.2.1",
     "aes-js": "^3.1.1",
     "bs58check": "^2.1.2",
