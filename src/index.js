@@ -83,7 +83,6 @@ Wallet.prototype.getPublicKeyString = function () {
 };
 
 Wallet.prototype.getAddress = function (hdPath) {
-  console.log('wallet getAddress 2', hdPath, hdPath.split('/')[2])
   // HD
   if (this.pubKey.length == 33) {
     // the original publicKey of hdkeyring's root hdkey is used for deriveChild, so we should keep it
@@ -91,7 +90,6 @@ Wallet.prototype.getAddress = function (hdPath) {
     // we calculate the ed25519 publicKey here, and get the address from it.
     return stcUtil.privateToPublicED(this.privKey)
       .then((pubKey) => {
-        console.log('address', stcUtil.publicToAddressED(pubKey, hdPath))
         return stcUtil.publicToAddressED(pubKey, hdPath)
       })
   }
